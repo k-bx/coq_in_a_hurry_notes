@@ -111,3 +111,23 @@ true exactly when n = p), define a function count list that takes a
 natural number and a list and returns the number of times the natural
 number occurs in the list. *)
 
+Search True.
+SearchPattern (_ + _ <= _ + _).
+SearchRewrite (_ + (_ - _)).
+
+Lemma example2 : forall a b:Prop, a /\ b -> b /\ a.
+Proof.
+intros a b H.
+split.
+destruct H as [H1 H2].
+exact H2.
+intuition.
+Qed.
+
+Lemma example3 : forall A B, A \/ B -> B \/ A.
+Proof.
+intros A B H.
+destruct H as [H1 | H1].
+right; assumption.
+left; assumption.
+Qed.
